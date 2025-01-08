@@ -17,7 +17,7 @@ int main() {
 
         int a = atoi(buffer);
         if (a != (i % 2 == 0)) {
-            printf("%d fail", i);
+            printf("%d fail\n", i);
             return -1;
         }
     }
