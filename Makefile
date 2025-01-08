@@ -3,6 +3,9 @@ CC = clang
 is_even: is_even.o
 	$(CC) $(LDFLAGS) $^ -o $@
 
+test: test.o is_even
+	$(CC) $< -o $@
+
 is_even.o: gen is_even.c
 	./gen > _is_even.c
 	cat is_even.c >> _is_even.c
@@ -15,4 +18,4 @@ gen: gen.o
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	rm is_even *.o _is_even.c gen
+	rm -f is_even *.o _is_even.c gen test
