@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 
 int main() {
-    for (unsigned short i = 0; i < UINT16_MAX; i++) {
+    for (unsigned i = 0; i <= UINT16_MAX; i++) {
         char command[32];
         sprintf(command, "./is_even %d", i);
         FILE* fd = popen(command, "r");
