@@ -1,22 +1,16 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
 
 #include <unistd.h>
 #include <sys/wait.h>
 
+#include "is_even.h"
+
 int main() {
     for (unsigned i = 0; i <= UINT16_MAX; i++) {
-        char command[32];
-        sprintf(command, "./is_even %d", i);
-        FILE* fd = popen(command, "r");
-
-        char buffer[10];
-        fgets(buffer, 10, fd);
-        pclose(fd);
-
-        int a = atoi(buffer);
-        if (a != (i % 2 == 0)) {
+        if (is_even(i) == (i % 2 == 0)) {
+            printf("%5d ok\n", i);
+        } else {
             printf("%d fail\n", i);
             return -1;
         }
